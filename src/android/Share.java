@@ -7,7 +7,7 @@
  *  LGPL v3 licensed
  */
 
-package com.contentecontent.cordova.plugins.share;
+package com.yixiangblog.cordova.share;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
@@ -23,7 +23,7 @@ import android.net.Uri;
 public class Share extends CordovaPlugin {
 
 	private void doSendIntent(String subject, String text, String imagePath, String mimeType) {
-		Uri parsedUri = Uri.parse(imagePath); 
+		Uri parsedUri = Uri.parse(imagePath);
 		Intent sendIntent = new Intent(android.content.Intent.ACTION_SEND);
 		sendIntent.setType(mimeType);
 		sendIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, subject);
@@ -31,7 +31,7 @@ public class Share extends CordovaPlugin {
 		sendIntent.putExtra(android.content.Intent.EXTRA_STREAM, parsedUri);
 		this.cordova.startActivityForResult(this, sendIntent, 0);
 	}
-	
+
 	@Override
 	public boolean execute(String action, JSONArray args, CallbackContext callbackContext) {
 		try {
