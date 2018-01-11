@@ -20,13 +20,13 @@
     <platform name="android">
 
         <config-file target="config.xml" parent="/*">
-    		<feature name="Share">
+    		<feature name="SimpleShare">
     			<param name="android-package" value="com.yixiangblog.cordova.share.Share"/>
     		</feature>
         </config-file>
 
-        <js-module src="www/share.js" name="Share">
-            <clobbers target="plugins.share" />
+        <js-module src="www/share.js" name="SimpleShare">
+            <clobbers target="plugins.simpleshare" />
         </js-module>
 
 		<source-file src="src/android/Share.java" target-dir="src/com/yixiangblog/cordova/share" />
