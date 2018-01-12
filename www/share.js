@@ -20,9 +20,9 @@ Share.prototype = {
 		if (types.join("|").indexOf(message.mimeType) < 0) {
 			return false;
 		}
-		cordova.exec(win, fail, 'Share', 'show', [{subject: message.subject, text: message.text, imagePath: message.imagePath, mimeType: message.mimeType}]);
+		cordova.exec(win, fail, 'SimpleShare', 'show', [{subject: message.subject, text: message.text, imagePath: message.imagePath, mimeType: message.mimeType}]);
 	}
-		   
+
 };
 
 var share = new Share();
