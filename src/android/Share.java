@@ -20,10 +20,18 @@ import android.content.Intent;
 import android.util.Log;
 import android.net.Uri;
 
+import android.support.v4.content.FileProvider;
+import java.io.File;
+
 public class Share extends CordovaPlugin {
 
     private void doSendIntent(String subject, String text, String imagePath, String mimeType) {
         Uri parsedUri = Uri.parse(imagePath);
+        // use content:// url only on 6.0 and above
+        // sending content:// url seems to not work on 5.x (I wonder why too)
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            parsedUri = FileProvider.getUriForFile(this.cordova.getActivity().getApplicationContext(), cordova.getActivity().getPackageName() + ".simpleshare.provider", new File(parsedUri.getPath()));
+        }
         Intent sendIntent = new Intent(android.content.Intent.ACTION_SEND);
         sendIntent.setType(mimeType);
         sendIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, subject);
