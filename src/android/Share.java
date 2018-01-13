@@ -22,28 +22,28 @@ import android.net.Uri;
 
 public class Share extends CordovaPlugin {
 
-	private void doSendIntent(String subject, String text, String imagePath, String mimeType) {
-		Uri parsedUri = Uri.parse(imagePath);
-		Intent sendIntent = new Intent(android.content.Intent.ACTION_SEND);
-		sendIntent.setType(mimeType);
-		sendIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, subject);
-		sendIntent.putExtra(android.content.Intent.EXTRA_TEXT, text);
-		sendIntent.putExtra(android.content.Intent.EXTRA_STREAM, parsedUri);
-		this.cordova.startActivityForResult(this, sendIntent, 0);
-	}
+    private void doSendIntent(String subject, String text, String imagePath, String mimeType) {
+        Uri parsedUri = Uri.parse(imagePath);
+        Intent sendIntent = new Intent(android.content.Intent.ACTION_SEND);
+        sendIntent.setType(mimeType);
+        sendIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, subject);
+        sendIntent.putExtra(android.content.Intent.EXTRA_TEXT, text);
+        sendIntent.putExtra(android.content.Intent.EXTRA_STREAM, parsedUri);
+        this.cordova.startActivityForResult(this, sendIntent, 0);
+    }
 
-	@Override
-	public boolean execute(String action, JSONArray args, CallbackContext callbackContext) {
-		try {
-			JSONObject jo = args.getJSONObject(0);
-			doSendIntent(jo.getString("subject"), jo.getString("text"), jo.getString("imagePath"), jo.getString("mimeType"));
-			callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK));
-			return true;
-		} catch (JSONException e) {
-			Log.e("PhoneGapLog", "Share Plugin: Error: " + PluginResult.Status.JSON_EXCEPTION);
-			e.printStackTrace();
-			callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.JSON_EXCEPTION));
-			return false;
-		}
-	}
+    @Override
+    public boolean execute(String action, JSONArray args, CallbackContext callbackContext) {
+        try {
+            JSONObject jo = args.getJSONObject(0);
+            doSendIntent(jo.getString("subject"), jo.getString("text"), jo.getString("imagePath"), jo.getString("mimeType"));
+            callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK));
+            return true;
+        } catch (JSONException e) {
+            Log.e("PhoneGapLog", "Share Plugin: Error: " + PluginResult.Status.JSON_EXCEPTION);
+            e.printStackTrace();
+            callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.JSON_EXCEPTION));
+            return false;
+        }
+    }
 }
