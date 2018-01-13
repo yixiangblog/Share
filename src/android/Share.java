@@ -20,7 +20,7 @@ import android.content.Intent;
 import android.util.Log;
 import android.net.Uri;
 
-import android.support.v4.content.FileProvider;
+import com.yixiangblog.cordova.share.FileProvider;
 import java.io.File;
 
 public class Share extends CordovaPlugin {
