@@ -25,12 +25,19 @@
     		</feature>
         </config-file>
 
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <provider android:authorities="${applicationId}.simpleshare.provider" android:exported="false" android:grantUriPermissions="true" android:name="android.support.v4.content.FileProvider">
+                <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/simpleshare_paths" />
+            </provider>
+        </config-file>
+
         <js-module src="www/share.js" name="SimpleShare">
             <clobbers target="plugins.simpleshare" />
         </js-module>
 
-		<source-file src="src/android/Share.java" target-dir="src/com/yixiangblog/cordova/share" />
-
+        <source-file src="src/android/Share.java" target-dir="src/com/yixiangblog/cordova/share" />
+        <source-file src="src/android/simpleshare_paths.xml" target-dir="res/xml"/>
+        <framework src="com.android.support:support-v4:24.1.1+" />
     </platform>
 
 </plugin>
