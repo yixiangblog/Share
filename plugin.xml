@@ -38,7 +38,7 @@
         <source-file src="src/android/Share.java" target-dir="src/com/yixiangblog/cordova/share" />
         <source-file src="src/android/FileProvider.java" target-dir="src/com/yixiangblog/cordova/share" />
         <source-file src="src/android/simpleshare_paths.xml" target-dir="res/xml"/>
-        <framework src="com.android.support:support-v4:24.1.1+" />
+        <framework src="com.android.support:support-core-utils:24.2+" />
     </platform>
 
 </plugin>
